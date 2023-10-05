@@ -19,7 +19,7 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Ducks() : base("Yellow Duck", 2M)
+        public Ducks(string sound, string name, decimal price, int quantity) : base(sound, name, price, quantity)
         {
 
         }

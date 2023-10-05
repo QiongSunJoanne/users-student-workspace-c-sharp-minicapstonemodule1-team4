@@ -13,6 +13,9 @@ namespace Capstone
         public decimal Price { get; private set; }
         private string sound;
 
+        public int Quantity { get; set; } = 5;
+
+
         public virtual string Sound
         {
             get
@@ -30,17 +33,22 @@ namespace Capstone
         }
         public bool IsPurchased { get; set; }
 
-        public Items(string name, decimal price)
+ 
+            
+
+
+        public Items(string name, decimal price, int quantity)
         {
             Name = name;
             Price = price;
-
+            Quantity = quantity;
         }
-        public Items(string sound, string name, decimal price)
+        public Items(string sound, string name, decimal price, int quantity)
         {
             Name = name;
             Price = price;
             Sound = sound;
+            Quantity = quantity;
         }
 
         

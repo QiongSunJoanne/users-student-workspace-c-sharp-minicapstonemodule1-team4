@@ -19,7 +19,7 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Cats() : base("Black Cats", 2M)
+        public Cats(string sound, string name, decimal price, int quantity) : base(sound,name, price, quantity)
         {
             
         }

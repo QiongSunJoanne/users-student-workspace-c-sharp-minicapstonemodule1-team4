@@ -8,21 +8,31 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Vending_Machine
+    public class Vending_Machine 
     {
-        public int Rows { get; private set; }
-        public List <Items> Display { get; set; }
+
+
+        Cats cat = new Cats("Meow, Meow, Meow", "Black Cat", 2.5M, 5);
+        Ducks duck = new Ducks();
+        Ponies pony = new Ponies();
+        Penguin penguin = new Penguin();
+
+        //public int Rows { get; private set; }
+        //public List <Items> Display { get; set; }
+        List<Items> items = new List<Items>() {  };
+
+         
         
 
-        public Vending_Machine(int rows, List <Items> display)
-        {
-            Rows = rows;
-            Display = display;
-        }
+        //public Vending_Machine(int rows, List <Items> display)
+        //{
+        //    Rows = rows;
+        //    Display = display;
+        //}
 
-        public void string DisplayItemsAndQuanity(List<Items>)
+        public void DisplayItemsAndQuanity()
         {
-            Console.WriteLine($"(1) {Cats} quantity {}");
+            Console.WriteLine();
         }
 
         public void ReturnMainMenu()

@@ -19,7 +19,7 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Ponies() : base("Unicorn Pony", 2M)
+        public Ponies(string sound, string name, decimal price, int quantity) : base(sound, name, price, quantity)
         {
 
         }

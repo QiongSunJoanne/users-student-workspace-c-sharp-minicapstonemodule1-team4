@@ -19,7 +19,7 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Penguin() : base("Penguin", 2M)
+        public Penguin(string sound, string name, decimal price, int quantity) : base(sound, name, price, quantity)
         {
 
         }
