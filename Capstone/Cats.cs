@@ -6,9 +6,25 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Cats
+    public class Cats: Items
     {
-        public Cats(): 
+        public override string Sound
+        {
+            get
+            {
+                if (IsPurchased)
+                {
+                    return "Meow, Meow, Meow!";
+                }
+                return Sound;
+            }
+        }
+        public Cats() : base("Black Cats", 2M)
+        {
+            
+        }
+
+    
 
 
 
