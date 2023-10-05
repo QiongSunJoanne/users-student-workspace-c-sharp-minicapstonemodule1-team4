@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace Capstone
     {
         public int Rows { get; private set; }
         public List <Items> Display { get; set; }
+        
 
         public Vending_Machine(int rows, List <Items> display)
         {
@@ -18,15 +20,11 @@ namespace Capstone
             Display = display;
         }
 
-        public void DisplayItems()
+        public void string DisplayItemsAndQuanity(List<Items>)
         {
-            Console.WriteLine(Display);
+            Console.WriteLine($"(1) {Cats} quantity {}");
         }
 
-        public void DisplayQItems()
-        {
-
-        }
         public void ReturnMainMenu()
         {
 
