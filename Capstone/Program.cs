@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Capstone
 {
@@ -6,7 +7,11 @@ namespace Capstone
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Cats regularCat = new Cats();
+            Cats blackCat = new Cats();
+            Cats blueCat = new Cats();
+            List<Items> A1 = new List<Items>() { regularCat, blackCat, blueCat };
+               
         }
     }
 }

@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    internal class Ponies
+    public class Ponies: Items
     {
+        public override string Sound
+        {
+            get
+            {
+                if (IsPurchased)
+                {
+                    return "Neigh, Neigh, Yay!";
+                }
+                return Sound;
+            }
+        }
+        public Ponies() : base("Unicorn Pony", 2M)
+        {
+
+        }
     }
 }
