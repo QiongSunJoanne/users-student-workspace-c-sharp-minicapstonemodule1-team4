@@ -9,8 +9,8 @@ namespace Capstone
         {
             Vending_Machine test = new Vending_Machine();
 
-            test.DisplayInventoryAndQuanity();
          
+            test.Purchase();
                
         }
     }

@@ -172,11 +172,43 @@ namespace Capstone
 
         public void ReturnMainMenu()
         {
+            
+            Console.WriteLine("1. Current Inventory");
+            Console.WriteLine("2. Purchase");
+            Console.WriteLine("3. Exit");
+            string userCoice = Console.ReadLine();
+
+        }
+
+        public void Purchase()
+        {
+            Console.WriteLine($"{Balance}");
+            Console.WriteLine("1. FeedMoney ");
+            Console.WriteLine("2. Select");
+            Console.WriteLine("3. Exit");
+            string userChoice = Console.ReadLine();
+            if (userChoice == "1")
+            {
+                FeedMoney();
+            }
+            else if (userChoice == "2")
+            {
+                DisplayItemsCost();
+            }
+            else if (userChoice == "3")
+            {
+                ReturnMainMenu();
+            }
 
         }
         public void DisplayItemsCost()
         {
-
+            //Console.WriteLine("Please make a selection:");
+            //string customerChoice = Console.ReadLine();
+            //if (customerChoice.Contains(Inventory[].Slot) 
+            //{
+            //    Console.WriteLine(Inventory[].Price);
+            //}
         }
         public void RefillRow()
         {
@@ -185,11 +217,15 @@ namespace Capstone
 
         public void FeedMoney() ////customer feed money;
         {
+            Console.WriteLine($"{Balance}");
+            
             Console.WriteLine("Please input money.");
 
             decimal totalMoney = decimal.Parse(Console.ReadLine());
 
             Balance += totalMoney;
+            Console.WriteLine($"{Balance}");
+            Console.ReadLine();
 
         }
         public void customerBalance()
