@@ -10,7 +10,7 @@ namespace Capstone
             Cats regularCat = new Cats();
             Cats blackCat = new Cats();
             Cats blueCat = new Cats();
-            List<Items> A1 = new List<Items>() { regularCat, blackCat, blueCat };
+            List<StuffedAnimals> A1 = new List<StuffedAnimals>() { regularCat, blackCat, blueCat };
                
         }
     }

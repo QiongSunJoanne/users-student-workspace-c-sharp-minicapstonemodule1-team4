@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Capstone
 {
-    public class Penguin : Items
+    public class Penguin : StuffedAnimals
     {
         public override string Sound
         {
@@ -19,7 +21,16 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Penguin(string sound, string name, decimal price, int quantity) : base(sound, name, price, quantity)
+        public Penguin(string sound, string slot, string name, decimal price, int quantity) : base(sound, slot, name, price, quantity)
+        {
+
+            Slot = slot;
+            Name = name;
+            Price = price;
+            Quantity = quantity;
+        }
+
+        public Penguin() : base("Squawk, Squawk, Whee!")
         {
 
         }

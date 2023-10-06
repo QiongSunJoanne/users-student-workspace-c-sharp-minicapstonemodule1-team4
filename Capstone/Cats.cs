@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Cats: Items
+    public class Cats : StuffedAnimals
     {
         public override string Sound
         {
@@ -19,17 +19,19 @@ namespace Capstone
                 return Sound;
             }
         }
-        public Cats(string sound, string name, decimal price, int quantity) : base(sound,name, price, quantity)
+        public Cats(string sound, string slot, string name, decimal price, int quantity) : base(sound,slot,name,price,quantity)
         {
-            
+
+            Slot = slot;
+            Name = name;
+            Price = price;
+            Quantity = quantity;
         }
 
-    
+        public Cats():base("Meow, Meow, Meow!")
+        {
 
-
-
-
-
+        }
 
     }
 }
