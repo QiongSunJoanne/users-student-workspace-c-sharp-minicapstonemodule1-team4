@@ -6,29 +6,10 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Ducks : StuffedAnimals
+    public class Ducks : StuffedAnimal
     {
-        public override string Sound
-        {
-            get
-            {
-                if (IsPurchased)
-                {
-                    return "Quack, Quack, Splash!";
-                }
-                return Sound;
-            }
-        }
-        public Ducks(string sound, string slot, string name, decimal price, int quantity) : base(sound, slot, name, price, quantity)
-        {
-
-            Slot = slot;
-            Name = name;
-            Price = price;
-            Quantity = quantity;
-        }
-
-        public Ducks() : base("Quack, Quack, Splash!")
+        public string Sound { get; private set; } = "Quack, Quack, Splash!";
+        public Ducks(string name, string sound, string slot, decimal price) : base(name, sound, slot, price)
         {
 
         }

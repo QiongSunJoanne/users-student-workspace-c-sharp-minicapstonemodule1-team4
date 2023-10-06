@@ -7,10 +7,10 @@ namespace Capstone
     {
         static void Main(string[] args)
         {
-            Cats regularCat = new Cats();
-            Cats blackCat = new Cats();
-            Cats blueCat = new Cats();
-            List<StuffedAnimals> A1 = new List<StuffedAnimals>() { regularCat, blackCat, blueCat };
+            Vending_Machine test = new Vending_Machine();
+
+            test.DisplayInventoryAndQuanity();
+         
                
         }
     }

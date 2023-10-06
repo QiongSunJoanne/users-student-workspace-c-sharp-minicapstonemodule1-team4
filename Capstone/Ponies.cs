@@ -8,29 +8,10 @@ using System.Xml.Linq;
 
 namespace Capstone
 {
-    public class Ponies : StuffedAnimals
+    public class Ponies : StuffedAnimal
     {
-        public override string Sound
-        {
-            get
-            {
-                if (IsPurchased)
-                {
-                    return "Neigh, Neigh, Yay!";
-                }
-                return Sound;
-            }
-        }
-        public Ponies(string sound, string slot, string name, decimal price, int quantity) : base(sound, slot, name, price, quantity)
-        {
-
-            Slot = slot;
-            Name = name;
-            Price = price;
-            Quantity = quantity;
-        }
-
-        public Ponies() : base("Neigh, Neigh, Yay!")
+        public string Sound { get; private set; } = "Neigh, Neigh, Yay!";
+        public Ponies(string name, string sound, string slot, decimal price) : base(name, sound, slot, price)
         {
 
         }
