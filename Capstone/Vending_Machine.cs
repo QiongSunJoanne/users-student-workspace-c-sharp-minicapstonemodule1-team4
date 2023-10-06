@@ -52,10 +52,10 @@ namespace Capstone
                 }
             }
   
+            
 
 
-
-    }
+        }
         public void DisplayItemsAndQuanity()
         {
             Console.WriteLine();
@@ -74,7 +74,31 @@ namespace Capstone
 
         }
 
+        public void FeedMoney() ////customer feed money;
+        {
+            Console.WriteLine("Please input money.");
 
+            decimal totalMoney = decimal.Parse(Console.ReadLine());
+
+            Balance += totalMoney;
+
+        }
+        public void customerBalance()
+        {
+            Console.WriteLine($"{Balance}");
+        }
+        
+           
+        
+
+
+
+        public decimal TakeChangeReturned(decimal change)
+        {
+            Console.WriteLine("Your change is: ");
+
+
+        }
 
     }
 }

@@ -10,20 +10,29 @@ namespace Capstone
     {
         public decimal Money { get; set; }
 
-        public Customer(decimal money)
+        public Customer()
         {
-            Money = money;
+            
         }
 
-        public decimal PayForItem(decimal money)
-        {
 
-        }
 
-        public decimal TakeChangeReturned(decimal change)
-        {
 
-        }
+
+        //public decimal FeedMoney(decimal totalMoney) ////customer feed money;
+        //{
+        //    Console.WriteLine("Please input money.");
+
+        //    totalMoney = decimal.Parse(Console.ReadLine());
+
+        //    ////Money = totalMoney;
+
+        //    return totalMoney;
+        //}
+
+
+
+       
     }
 
 
