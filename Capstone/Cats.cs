@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace Capstone
 {
-    public class Cats : StuffedAnimal
+    public class Cats : Items
     {
-        public string Sound { get; private set; } = "Meow, Meow, Meow!";
-        public Cats(string name, string sound, string slot, decimal price) : base(name, sound, slot, price)
+       
+        public const string Sound = "Meow, Meow, Meow!";
+       
+      
+        
+        public Cats(string itemName, decimal price, int quantity) : base(itemName, price, quantity, Sound )
         {
 
         }
+
+       
 
     }
 }

@@ -8,10 +8,10 @@ using System.Xml.Linq;
 
 namespace Capstone
 {
-    public class Ponies : StuffedAnimal
+    public class Ponies : Items
     {
-        public string Sound { get; private set; } = "Neigh, Neigh, Yay!";
-        public Ponies(string name, string sound, string slot, decimal price) : base(name, sound, slot, price)
+        public const string Sound = "Neigh, Neigh, Yay!";
+        public Ponies(string itemName, decimal price, int quantity) : base(itemName, price, quantity, Sound)
         {
 
         }

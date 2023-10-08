@@ -6,16 +6,20 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Capstone
 {
-    public class Vending_Machine 
+    public class VendingMachine
     {
+        private Menu Trans = new Menu();
 
-        public decimal Balance { get; set; } = 0.00M;
+        public Dictionary<string, Items> Inventory = new Dictionary<string, Items>();
 
-        Dictionary<string, StuffedAnimal> Inventory = new Dictionary<string, StuffedAnimal>();
+        //public decimal Balance { get; set; } = 0.00M;
+
         
+
         public void AddAnimalsToVending()
         {
             string directory = Environment.CurrentDirectory;
@@ -26,9 +30,10 @@ namespace Capstone
             {
                 while (!sr.EndOfStream)
                 {
+
                     string lineOfText = sr.ReadLine();
                     if (lineOfText.Contains("A1"))
-                    {                       
+                    {
                         string[] duckStringSplit = lineOfText.Split("|");
                         decimal duckPrice = Decimal.Parse(duckStringSplit[2]);
                         Ducks duckType = new Ducks(duckStringSplit[1], "Quack, Quack, Splash!", duckStringSplit[0], duckPrice);
@@ -141,8 +146,8 @@ namespace Capstone
                     }
                 }
             }
-  
-            
+
+
 
 
         }
@@ -172,7 +177,7 @@ namespace Capstone
 
         public void ReturnMainMenu()
         {
-            
+
             Console.WriteLine("1. Current Inventory");
             Console.WriteLine("2. Purchase");
             Console.WriteLine("3. Exit");
@@ -183,7 +188,7 @@ namespace Capstone
         public void Purchase()
         {
             Console.WriteLine($"{Balance}");
-            Console.WriteLine("1. FeedMoney ");
+            Console.WriteLine("1. FeedMoney");
             Console.WriteLine("2. Select");
             Console.WriteLine("3. Exit");
             string userChoice = Console.ReadLine();
@@ -218,7 +223,7 @@ namespace Capstone
         public void FeedMoney() ////customer feed money;
         {
             Console.WriteLine($"{Balance}");
-            
+
             Console.WriteLine("Please input money.");
 
             decimal totalMoney = decimal.Parse(Console.ReadLine());
@@ -232,9 +237,9 @@ namespace Capstone
         {
             Console.WriteLine($"{Balance}");
         }
-        
-           
-        
+
+
+
 
 
 
