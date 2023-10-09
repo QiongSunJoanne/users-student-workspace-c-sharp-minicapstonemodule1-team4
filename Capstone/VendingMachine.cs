@@ -12,243 +12,214 @@ namespace Capstone
 {
     public class VendingMachine
     {
-        private Menu Trans = new Menu();
+        //private Menu Trans = new Menu();
 
         public Dictionary<string, Items> Inventory = new Dictionary<string, Items>();
 
-        //public decimal Balance { get; set; } = 0.00M;
+        public decimal Balance { get; set; } = 0.00M;
 
-        
+        public ItemLog log = new ItemLog();
+       
 
         public void AddAnimalsToVending()
         {
             string directory = Environment.CurrentDirectory;
             string fileName = "../../../../vendingmachine.csv";
             string fullPath = Path.Combine(directory, fileName);
-
             using (StreamReader sr = new StreamReader(fullPath))
             {
                 while (!sr.EndOfStream)
-                {
-
+                {                   
                     string lineOfText = sr.ReadLine();
-                    if (lineOfText.Contains("A1"))
-                    {
-                        string[] duckStringSplit = lineOfText.Split("|");
-                        decimal duckPrice = Decimal.Parse(duckStringSplit[2]);
-                        Ducks duckType = new Ducks(duckStringSplit[1], "Quack, Quack, Splash!", duckStringSplit[0], duckPrice);
-                        Inventory["A1"] = duckType;
+                    string[] animalStringSplit = lineOfText.Split("|");
+                    string animalSlot = animalStringSplit[0];
+                    string animalName = animalStringSplit[1];
+                    decimal animalPrice = Decimal.Parse(animalStringSplit[2]);
+                    string animalType = animalStringSplit[3];
+
+                    if (lineOfText.Contains("Duck"))
+                    {                    
+                        Ducks duckType = new Ducks(animalName, animalPrice, 5, animalSlot, animalType);
+                        Inventory[animalSlot] = duckType;
                     }
-                    else if (lineOfText.Contains("A2"))
+                    else if (lineOfText.Contains("Penguin"))
                     {
-                        string[] duckStringSplit = lineOfText.Split("|");
-                        decimal duckPrice = Decimal.Parse(duckStringSplit[2]);
-                        Ducks duckType = new Ducks(duckStringSplit[1], "Quack, Quack, Splash!", duckStringSplit[0], duckPrice);
-                        Inventory["A2"] = duckType;
+
+                        Penguin penguinType = new Penguin(animalName, animalPrice, 5, animalSlot, animalType);
+                        Inventory[animalSlot] = penguinType;
                     }
-                    else if (lineOfText.Contains("A3"))
+                    else if (lineOfText.Contains("Cat"))
                     {
-                        string[] duckStringSplit = lineOfText.Split("|");
-                        decimal duckPrice = Decimal.Parse(duckStringSplit[2]);
-                        Ducks duckType = new Ducks(duckStringSplit[1], "Quack, Quack, Splash!", duckStringSplit[0], duckPrice);
-                        Inventory["A3"] = duckType;
+                        Cats catType = new Cats(animalName, animalPrice, 5, animalSlot, animalType);
+                        Inventory[animalSlot] = catType;
                     }
-                    else if (lineOfText.Contains("A4"))
+                    else if (lineOfText.Contains("Pony"))
                     {
-                        string[] duckStringSplit = lineOfText.Split("|");
-                        decimal duckPrice = Decimal.Parse(duckStringSplit[2]);
-                        Ducks duckType = new Ducks(duckStringSplit[1], "Quack, Quack, Splash!", duckStringSplit[0], duckPrice);
-                        Inventory["A4"] = duckType;
-                    }
-                    else if (lineOfText.Contains("B1"))
-                    {
-                        string[] penStringSplit = lineOfText.Split("|");
-                        decimal penguinPrice = Decimal.Parse(penStringSplit[2]);
-                        Penguin penguinType = new Penguin(penStringSplit[1], "Squawk, Squawk, Whee!", penStringSplit[0], penguinPrice);
-                        Inventory["B1"] = penguinType;
-                    }
-                    else if (lineOfText.Contains("B2"))
-                    {
-                        string[] penStringSplit = lineOfText.Split("|");
-                        decimal penguinPrice = Decimal.Parse(penStringSplit[2]);
-                        Penguin penguinType = new Penguin(penStringSplit[1], "Squawk, Squawk, Whee!", penStringSplit[0], penguinPrice);
-                        Inventory["B2"] = penguinType;
-                    }
-                    else if (lineOfText.Contains("B3"))
-                    {
-                        string[] penStringSplit = lineOfText.Split("|");
-                        decimal penguinPrice = Decimal.Parse(penStringSplit[2]);
-                        Penguin penguinType = new Penguin(penStringSplit[1], "Squawk, Squawk, Whee!", penStringSplit[0], penguinPrice);
-                        Inventory["B3"] = penguinType;
-                    }
-                    else if (lineOfText.Contains("B4"))
-                    {
-                        string[] penStringSplit = lineOfText.Split("|");
-                        decimal penguinPrice = Decimal.Parse(penStringSplit[2]);
-                        Penguin penguinType = new Penguin(penStringSplit[1], "Squawk, Squawk, Whee!", penStringSplit[0], penguinPrice);
-                        Inventory["B4"] = penguinType;
-                    }
-                    else if (lineOfText.Contains("C1"))
-                    {
-                        string[] catStringSplit = lineOfText.Split("|");
-                        decimal catPrice = Decimal.Parse(catStringSplit[2]);
-                        Cats catType = new Cats(catStringSplit[1], "Meow, Meow, Meow!", catStringSplit[0], catPrice);
-                        Inventory["C1"] = catType;
-                    }
-                    else if (lineOfText.Contains("C2"))
-                    {
-                        string[] catStringSplit = lineOfText.Split("|");
-                        decimal catPrice = Decimal.Parse(catStringSplit[2]);
-                        Cats catType = new Cats(catStringSplit[1], "Meow, Meow, Meow!", catStringSplit[0], catPrice);
-                        Inventory["C2"] = catType;
-                    }
-                    else if (lineOfText.Contains("C3"))
-                    {
-                        string[] catStringSplit = lineOfText.Split("|");
-                        decimal catPrice = Decimal.Parse(catStringSplit[2]);
-                        Cats catType = new Cats(catStringSplit[1], "Meow, Meow, Meow!", catStringSplit[0], catPrice);
-                        Inventory["C3"] = catType;
-                    }
-                    else if (lineOfText.Contains("C4"))
-                    {
-                        string[] catStringSplit = lineOfText.Split("|");
-                        decimal catPrice = Decimal.Parse(catStringSplit[2]);
-                        Cats catType = new Cats(catStringSplit[1], "Meow, Meow, Meow!", catStringSplit[0], catPrice);
-                        Inventory["C4"] = catType;
-                    }
-                    else if (lineOfText.Contains("D1"))
-                    {
-                        string[] poniesStringSplit = lineOfText.Split("|");
-                        decimal ponyPrice = Decimal.Parse(poniesStringSplit[2]);
-                        Ponies ponyType = new Ponies(poniesStringSplit[1], "Neigh, Neigh, Yay!", poniesStringSplit[0], ponyPrice);
-                        Inventory["D1"] = ponyType;
-                    }
-                    else if (lineOfText.Contains("D2"))
-                    {
-                        string[] poniesStringSplit = lineOfText.Split("|");
-                        decimal ponyPrice = Decimal.Parse(poniesStringSplit[2]);
-                        Ponies ponyType = new Ponies(poniesStringSplit[1], "Neigh, Neigh, Yay!", poniesStringSplit[0], ponyPrice);
-                        Inventory["D2"] = ponyType;
-                    }
-                    else if (lineOfText.Contains("D3"))
-                    {
-                        string[] poniesStringSplit = lineOfText.Split("|");
-                        decimal ponyPrice = Decimal.Parse(poniesStringSplit[2]);
-                        Ponies ponyType = new Ponies(poniesStringSplit[1], "Neigh, Neigh, Yay!", poniesStringSplit[0], ponyPrice);
-                        Inventory["D3"] = ponyType;
-                    }
-                    else if (lineOfText.Contains("D4"))
-                    {
-                        string[] poniesStringSplit = lineOfText.Split("|");
-                        decimal ponyPrice = Decimal.Parse(poniesStringSplit[2]);
-                        Ponies ponyType = new Ponies(poniesStringSplit[1], "Neigh, Neigh, Yay!", poniesStringSplit[0], ponyPrice);
-                        Inventory["D4"] = ponyType;
+                        Ponies ponyType = new Ponies(animalName, animalPrice, 5, animalSlot, animalType);
+                        Inventory[animalSlot] = ponyType;
                     }
                 }
             }
-
-
-
-
         }
+
         public void DisplayInventoryAndQuanity()
         {
-            customerBalance();
-            Console.WriteLine("");
-            AddAnimalsToVending();
-            Console.WriteLine("Current Inventory\n ");
-            Console.WriteLine($"{Inventory["A1"].Slot} | {Inventory["A1"].Name} | {Inventory["A1"].Price} | Duck | {Inventory["A1"].Quantity}");
-            Console.WriteLine($"{Inventory["A2"].Slot} | {Inventory["A2"].Name} | {Inventory["A2"].Price} | Duck | {Inventory["A2"].Quantity}");
-            Console.WriteLine($"{Inventory["A3"].Slot} | {Inventory["A3"].Name} | {Inventory["A3"].Price} | Duck | {Inventory["A3"].Quantity}");
-            Console.WriteLine($"{Inventory["A4"].Slot} | {Inventory["A4"].Name} | {Inventory["A4"].Price} | Duck | {Inventory["A4"].Quantity}");
-            Console.WriteLine($"{Inventory["B1"].Slot} | {Inventory["B1"].Name} | {Inventory["B1"].Price} | Penguin | {Inventory["B1"].Quantity}");
-            Console.WriteLine($"{Inventory["B2"].Slot} | {Inventory["B2"].Name} | {Inventory["B2"].Price} | Penguin | {Inventory["B2"].Quantity}");
-            Console.WriteLine($"{Inventory["B3"].Slot} | {Inventory["B3"].Name} | {Inventory["B3"].Price} | Penguin | {Inventory["B3"].Quantity}");
-            Console.WriteLine($"{Inventory["B4"].Slot} | {Inventory["B4"].Name} | {Inventory["B4"].Price} | Penguin | {Inventory["B4"].Quantity}");
-            Console.WriteLine($"{Inventory["C1"].Slot} | {Inventory["C1"].Name} | {Inventory["C1"].Price} | Cat | {Inventory["C1"].Quantity}");
-            Console.WriteLine($"{Inventory["C2"].Slot} | {Inventory["C2"].Name} | {Inventory["C2"].Price} | Cat | {Inventory["C2"].Quantity}");
-            Console.WriteLine($"{Inventory["C3"].Slot} | {Inventory["C3"].Name} | {Inventory["C3"].Price} | Cat | {Inventory["C3"].Quantity}");
-            Console.WriteLine($"{Inventory["C4"].Slot} | {Inventory["C4"].Name} | {Inventory["C4"].Price} | Cat | {Inventory["C4"].Quantity}");
-            Console.WriteLine($"{Inventory["D1"].Slot} | {Inventory["D1"].Name} | {Inventory["D1"].Price} | Pony | {Inventory["D1"].Quantity}");
-            Console.WriteLine($"{Inventory["D2"].Slot} | {Inventory["D2"].Name} | {Inventory["D2"].Price} | Pony | {Inventory["D2"].Quantity}");
-            Console.WriteLine($"{Inventory["D3"].Slot} | {Inventory["D3"].Name} | {Inventory["D3"].Price} | Pony | {Inventory["D3"].Quantity}");
-            Console.WriteLine($"{Inventory["D4"].Slot} | {Inventory["D4"].Name} | {Inventory["D4"].Price} | Pony | {Inventory["D4"].Quantity}");
+            foreach(KeyValuePair<string, Items> kvp in Inventory)
+            {
+                Console.WriteLine($"{Inventory[kvp.Key].Slot} | {Inventory[kvp.Key].ItemName} | {Inventory[kvp.Key].Price} | {Inventory[kvp.Key].AnimalType} | {Inventory[kvp.Key].Quantity}");
+            }
         }
 
-        public void ReturnMainMenu()
+        public void MainMenu()
         {
-
-            Console.WriteLine("1. Current Inventory");
-            Console.WriteLine("2. Purchase");
-            Console.WriteLine("3. Exit");
-            string userCoice = Console.ReadLine();
-
+            string firstUserChoice = "";
+            do
+            {
+                Console.WriteLine("Please Select An Option!\n ");
+                Console.WriteLine("(1) Display Vending Machine Items");
+                Console.WriteLine("(2) Purchase");
+                Console.WriteLine("(3) Exit");
+                Console.WriteLine("");
+                firstUserChoice = Console.ReadLine();
+                if (firstUserChoice == "1")
+                {
+                    Console.Clear();
+                    DisplayInventoryAndQuanity();
+                    Console.WriteLine("\nPress Enter To Return To The Main Menu!");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+                else if(firstUserChoice == "2")
+                {
+                    Console.Clear();
+                    Purchase();
+                    
+                }
+                else if(firstUserChoice == "3")
+                {
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Choice, Please Select Valid Option!\n(Press Enter To Continue)");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+            }
+            while (firstUserChoice != "3");
         }
 
         public void Purchase()
         {
-            Console.WriteLine($"{Balance}");
-            Console.WriteLine("1. FeedMoney");
-            Console.WriteLine("2. Select");
-            Console.WriteLine("3. Exit");
-            string userChoice = Console.ReadLine();
-            if (userChoice == "1")
+            string userChoice = "";
+            do
             {
-                FeedMoney();
-            }
-            else if (userChoice == "2")
-            {
-                DisplayItemsCost();
-            }
-            else if (userChoice == "3")
-            {
-                ReturnMainMenu();
-            }
+                Console.WriteLine($"Current Money Provided: {Balance}\n ");
+                Console.WriteLine("(1) Feed Money");
+                Console.WriteLine("(2) Select Product");
+                Console.WriteLine("(3) Finish Transaction");
+                Console.WriteLine("\nPlease Select An Option: ");
+                userChoice = Console.ReadLine();
 
+                if (userChoice == "1")
+                {
+                    Console.Clear();
+                    FeedMoney();
+                    
+                }
+                else if (userChoice == "2")
+                {
+                    Console.Clear();
+                    ItemSelection();
+                }
+                else if (userChoice == "3")
+                {
+                    FinishTransaction();
+                    return;
+                }
+            }
+            while (userChoice != "3");
         }
-        public void DisplayItemsCost()
+        public void ItemSelection()
         {
-            //Console.WriteLine("Please make a selection:");
-            //string customerChoice = Console.ReadLine();
-            //if (customerChoice.Contains(Inventory[].Slot) 
-            //{
-            //    Console.WriteLine(Inventory[].Price);
-            //}
-        }
-        public void RefillRow()
-        {
+            Console.WriteLine($"Current Money Provided: {Balance}\n ");
+            DisplayInventoryAndQuanity();
+            Console.Write("\nPlease Enter Item Number (ex A1): ");           
+            string customerChoice = Console.ReadLine();
+            customerChoice = customerChoice.ToUpper();
 
+            try
+            {
+                if (customerChoice.Contains(Inventory[customerChoice].Slot))
+                {
+                    if (Inventory[customerChoice].Quantity < 1)
+                    {
+                        Console.WriteLine("Item Is Currently Sold Out, Please Make Another Selection\n(press enter to continue)");
+                        Console.ReadLine();
+                        Console.Clear();
+                        return;
+                    }
+
+                    if (Balance > Inventory[customerChoice].Price)
+                    {
+                        
+                        Balance -= Inventory[customerChoice].Price;
+                        Inventory[customerChoice].Quantity--;
+                        //jordan created log for purchase
+                        log.WriteMessage($"{Inventory[customerChoice].ItemName} {Inventory[customerChoice].Slot}", Inventory[customerChoice].Price, Balance); 
+                        Console.WriteLine($"{Inventory[customerChoice].Sound}\n(press enter to continue)");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    else
+                    {
+
+                        Console.WriteLine($"Insufficient Funds\nItem Costs: {Inventory[customerChoice].Price}, (press enter to continue)");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Invalid Selection, Please try again!");
+                Console.ReadLine();
+                Console.Clear();
+            }
         }
 
         public void FeedMoney() ////customer feed money;
         {
             Console.WriteLine($"{Balance}");
-
             Console.WriteLine("Please input money.");
-
             decimal totalMoney = decimal.Parse(Console.ReadLine());
-
+            Console.Clear();
             Balance += totalMoney;
-            Console.WriteLine($"{Balance}");
+            log.WriteMessage($"FEED MONEY:", totalMoney, Balance);                     
+        }
+
+        public void FinishTransaction()
+        {
+            decimal change = Balance;
+            decimal wholeDollarAmount = (change * 100);
+            int currentBalance = (int)wholeDollarAmount;
+            
+            int quarters = currentBalance / 25;
+            int dimes = (currentBalance % 25) / 10;
+            int nickels = ((currentBalance % 25) % 10) / 5;
+            Console.WriteLine($"Your Change Is: Quarters: {quarters}, Dimes: {dimes}, and Nickels: {nickels} ");
+            Balance = 0;
+            log.WriteMessage($"GIVE CHANGE:", change, Balance);
+            Console.WriteLine($"Current Money Provided: {Balance}\n(press enter to continue) ");
             Console.ReadLine();
-
+            Console.Clear();
+            return;
         }
-        public void customerBalance()
+
+        public void Run()
         {
-            Console.WriteLine($"{Balance}");
+            AddAnimalsToVending();
+            MainMenu();
         }
-
-
-
-
-
-
-        public decimal TakeChangeReturned(decimal change)
-        {
-            Console.WriteLine("Your change is: ");
-
-            return change;
-        }
-
     }
 }

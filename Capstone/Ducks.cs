@@ -8,9 +8,10 @@ namespace Capstone
 {
     public class Ducks : Items
     {
-        public const string Sound = "Quack, Quack, Splash!";
+        //commented out by Jordan
+        //public const string Sound = "Quack, Quack, Splash!";
 
-        public Ducks(string itemName, decimal price, int quantity) : base(itemName, price, quantity, Sound)
+        public Ducks(string itemName, decimal price, int quantity, string slot, string animalType) : base(itemName, price, quantity, "Quack, Quack, Splash!", slot, animalType)
         {
 
         }

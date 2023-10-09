@@ -11,11 +11,14 @@ namespace Capstone
     {
         public string ItemName { get; set; }
         public string Sound { get; set; }
-        //public string Slot { get; private set; }
+        public string Slot { get; private set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; } = 5;
-        ///public bool IsPurchased { get; set; }
-        public string SoldOut { get; set; }
+
+        public string AnimalType { get; private set; }
+        //Jordans Question - why was this commented out?
+        //public bool IsPurchased { get; set; }
+        //public string SoldOut { get; set; }
 
 
         public Items()
@@ -24,13 +27,16 @@ namespace Capstone
         }
         
         
-        public Items (string itemName, decimal price, int quantity, string sound )
+        public Items (string itemName, decimal price, int quantity, string sound, string slot, string animalType)
         {
             ItemName = itemName;
             Price = price;
             Quantity = quantity;
             Sound = sound;
-            SoldOut = $"Sold out {ItemName}!\nBuy something else!";
+            Slot = slot;
+            AnimalType = animalType;
+            //Jordan's Comment - what is this for?
+            //SoldOut = $"{ItemName} Is Sold out !\nMake another choise!";
         }
 
         

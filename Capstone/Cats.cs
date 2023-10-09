@@ -9,11 +9,11 @@ namespace Capstone
     public class Cats : Items
     {
        
-        public const string Sound = "Meow, Meow, Meow!";
+        //public const string Sound = "Meow, Meow, Meow!";
        
       
         
-        public Cats(string itemName, decimal price, int quantity) : base(itemName, price, quantity, Sound )
+        public Cats(string itemName, decimal price, int quantity, string slot, string animalType) : base(itemName, price, quantity, "Meow, Meow, Meow!", slot, animalType)
         {
 
         }
